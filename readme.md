@@ -3,6 +3,9 @@
 This program is designed to convert the raw .txt data from an XL2 SL meter to a user-friendly pdf file.
 
 ## How to use
+
+The binary has been compiled for an M-chip Mac. Other releases will be available in the future.
+
 ### Fast report
 `/path/to/xl2-report-builder /path/to/report.txt`
 
