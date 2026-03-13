@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            binary: xl2-report-maker
+            asset: xl2-report-maker-linux
+          - os: windows-latest
+            binary: xl2-report-maker.exe
+            asset: xl2-report-maker.exe
+          - os: macos-latest
+            binary: xl2-report-maker
+            asset: xl2-report-maker
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.26'
+
+      - name: Build
+        run: go build -v -o ${{ matrix.binary }} .
+
+      - name: Rename asset
+        shell: bash
+        run: mv ${{ matrix.binary }} ${{ matrix.asset }}
+
+      - name: Upload release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ matrix.asset }}
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
