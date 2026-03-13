@@ -1,4 +1,4 @@
-# SLM report generator for NTi XL2
+# Sound level report generator for NTi XL2
 
 This program is designed to convert the raw .txt data from an XL2 SL meter to a user-friendly pdf file.
 
