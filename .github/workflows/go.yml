@@ -18,10 +18,10 @@ jobs:
             asset: xl2-report-maker-linux
           - os: windows-latest
             binary: xl2-report-maker.exe
-            asset: xl2-report-maker.exe
+            asset: xl2-report-maker-windows.exe
           - os: macos-latest
             binary: xl2-report-maker
-            asset: xl2-report-maker
+            asset: xl2-report-maker-macos
 
     steps:
       - uses: actions/checkout@v4
